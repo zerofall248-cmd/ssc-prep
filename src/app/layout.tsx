@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s | SSC Prep",
   },
   description:
-    "Explore SSC exam categories, focused practice sets and study resources in one preparation space.",
+    "Explore SSC exam categories and sample preparation ideas in a focused study portal.",
   applicationName: "SSC Prep",
   keywords: [
     "SSC CGL",
