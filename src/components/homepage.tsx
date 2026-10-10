@@ -63,10 +63,6 @@ export default function Homepage() {
             <a href="#practice">Practice</a>
           </nav>
 
-          <a className="button button-primary header-action" href="#exams">
-            Choose your exam <Arrow />
-          </a>
-
           <button
             className="mobile-menu-toggle"
             type="button"
@@ -88,7 +84,6 @@ export default function Homepage() {
         >
           <a href="#exams" onClick={closeMenu}>Explore exams <Arrow /></a>
           <a href="#practice" onClick={closeMenu}>Practice options <Arrow /></a>
-          <a className="mobile-primary-link" href="#exams" onClick={closeMenu}>Choose your exam <Arrow /></a>
         </nav>
       </header>
 
@@ -136,7 +131,7 @@ export default function Homepage() {
             <div className="exam-list">
               {matchingExams.map((exam) => (
                 <article className="exam-item" key={exam.code}>
-                  <span className={"exam-code exam-code-" + exam.tone} aria-hidden="true">{exam.code}</span>
+                  <span className="exam-code" aria-hidden="true">{exam.code}</span>
                   <div className="exam-copy">
                     <h3>{exam.name}</h3>
                     <p>{exam.level}</p>
