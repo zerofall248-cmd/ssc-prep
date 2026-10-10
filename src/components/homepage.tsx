@@ -438,9 +438,11 @@ export default function Homepage() {
                       <div className="featured-exam-main">
                         <h3>{exam.name}</h3>
                         <p className="featured-exam-full-name">{exam.fullName}</p>
-                        <div className="featured-exam-stages">
-                          {exam.stages ? <span>{exam.stages}</span> : <span className="exam-stage-placeholder" aria-hidden="true" />}
-                        </div>
+                        {exam.stages && (
+                          <div className="featured-exam-stages">
+                            <span>{exam.stages}</span>
+                          </div>
+                        )}
                         <div className="featured-exam-stats">
                           <span><Icon name="book" size={13} />{exam.mocks}</span>
                           <span><Icon name="chart" size={13} />{exam.pyqs}</span>
