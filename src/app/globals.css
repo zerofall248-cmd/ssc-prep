@@ -1002,8 +1002,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .hero-content { width: 100%; }
   .hero-content h1 { max-width: 300px; font-size: 24px; }
   .hero-content > p:not(.hero-eyebrow) { max-width: 265px; }
-  .hero-books-left { width: 80px; right: 12%; bottom: -28px; opacity: .18; }
-  .hero-books-right { width: 79px; bottom: -29px; right: -17px; opacity: .2; }
+  .hero-books-left { width: 76px; right: 12%; bottom: -23px; opacity: .48; }
+  .hero-books-right { width: 74px; bottom: -24px; right: -12px; opacity: .42; }
   .utility-rail { grid-template-columns: 1fr; }
   .featured-exam-grid, .popular-test-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .featured-exam-card-top { min-height: 76px; }
