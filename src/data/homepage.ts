@@ -16,8 +16,96 @@ export const exams: ExamItem[] = [
   { name: "SSC Selection Post", level: "Post-specific", description: "Find practice that fits your target selection post.", code: "SP" },
 ];
 
-export const practiceSets = [
-  { title: "Reasoning warm-up", text: "Start with a short set of logic and pattern-based questions.", tag: "Reasoning", number: "01" },
-  { title: "Arithmetic basics", text: "Build confidence with core quantitative aptitude topics.", tag: "Quantitative Aptitude", number: "02" },
-  { title: "English essentials", text: "Revisit grammar and vocabulary with focused revision.", tag: "English Language", number: "03" },
+export type SubjectVisual = "quantitative" | "reasoning" | "english" | "awareness";
+
+export type SubjectItem = {
+  id: string;
+  name: string;
+  text: string;
+  practiceTag: string;
+  visual: SubjectVisual;
+};
+
+export const subjects: SubjectItem[] = [
+  {
+    id: "quantitative",
+    name: "Quantitative Aptitude",
+    text: "Arithmetic, algebra, geometry and data interpretation.",
+    practiceTag: "Quantitative Aptitude",
+    visual: "quantitative",
+  },
+  {
+    id: "reasoning",
+    name: "General Intelligence",
+    text: "Series, analogy, coding-decoding and logical reasoning.",
+    practiceTag: "General Intelligence",
+    visual: "reasoning",
+  },
+  {
+    id: "english",
+    name: "English Language",
+    text: "Grammar, vocabulary, comprehension and usage.",
+    practiceTag: "English Language",
+    visual: "english",
+  },
+  {
+    id: "awareness",
+    name: "General Awareness",
+    text: "Static GK, science, history, polity and current affairs.",
+    practiceTag: "General Awareness",
+    visual: "awareness",
+  },
 ];
+
+export type PracticeItem = {
+  number: string;
+  title: string;
+  text: string;
+  tag: string;
+  visual: SubjectVisual;
+};
+
+export const practiceSets: PracticeItem[] = [
+  {
+    number: "01",
+    title: "Reasoning warm-up",
+    text: "Start with a short set of logic and pattern-based questions.",
+    tag: "General Intelligence",
+    visual: "reasoning",
+  },
+  {
+    number: "02",
+    title: "Arithmetic basics",
+    text: "Build confidence with core quantitative aptitude topics.",
+    tag: "Quantitative Aptitude",
+    visual: "quantitative",
+  },
+  {
+    number: "03",
+    title: "English essentials",
+    text: "Revisit grammar and vocabulary with focused revision.",
+    tag: "English Language",
+    visual: "english",
+  },
+];
+
+export const resources = [
+  {
+    id: "notes",
+    title: "Study notes",
+    text: "Short revision notes for key concepts.",
+    symbol: "notes",
+  },
+  {
+    id: "vocabulary",
+    title: "Vocabulary",
+    text: "Word meanings and revision lists.",
+    symbol: "vocabulary",
+  },
+  {
+    id: "current-affairs",
+    title: "Current affairs",
+    text: "A category for current-affairs study material.",
+    symbol: "current-affairs",
+  },
+] as const;
