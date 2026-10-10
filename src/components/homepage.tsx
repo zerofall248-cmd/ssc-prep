@@ -495,7 +495,7 @@ export default function Homepage() {
                     );
                   })}
                 </div>
-                <p className="catalogue-disclaimer">Test titles, Free/Premium labels, and attempt counts are illustrative display data, not verified access status or live activity. These tests cannot be launched in this version.</p>
+                <p className="catalogue-disclaimer">Test titles, Free/Premium labels, attempt counts, and the “top-rated” label are illustrative display data, not verified access status, rankings, or live activity. These tests cannot be launched in this version.</p>
               </section>
             </div>
 
