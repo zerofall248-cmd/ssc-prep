@@ -115,7 +115,7 @@ export default function Homepage() {
             <div>
               <p className="eyebrow"><span /> FIND YOUR DIRECTION</p>
               <h2>Choose your exam</h2>
-              <p className="section-description">Start with the exam you're working towards.</p>
+              <p className="section-description">Start with the exam you are working towards.</p>
             </div>
             <label className="exam-search">
               <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none">
