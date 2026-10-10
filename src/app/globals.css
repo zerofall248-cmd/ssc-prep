@@ -226,7 +226,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .sidebar-collapsed .sidebar-brand-row { flex-direction: column; padding: 0 0 24px; }
 .sidebar-collapsed .brand { gap: 0; }
 .sidebar-collapsed .brand-wordmark,
-.sidebar-collapsed .sidebar-collapse,
 .sidebar-collapsed .navigation-label,
 .sidebar-collapsed .nav-label,
 .sidebar-collapsed .sidebar-bottom p,
