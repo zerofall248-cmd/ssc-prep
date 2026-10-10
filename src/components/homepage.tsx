@@ -238,6 +238,7 @@ export default function Homepage() {
   const [searchFocused, setSearchFocused] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
   const [testNoticeId, setTestNoticeId] = useState<string | null>(null);
+  const [showAllExams, setShowAllExams] = useState(false);
 
   const matchingExams = useMemo(() => {
     const term = query.trim().toLowerCase();
@@ -250,6 +251,8 @@ export default function Homepage() {
   }, [query]);
 
   const suggestedExams = matchingExams.slice(0, 5);
+  const directoryExpanded = showAllExams && matchingExams.length > 4;
+  const visibleDirectoryExams = directoryExpanded ? matchingExams : matchingExams.slice(0, 4);
   const searchPanelOpen = searchFocused && query.trim().length > 0;
 
   useEffect(() => {
@@ -325,6 +328,7 @@ export default function Homepage() {
         </div>
 
         <nav className="sidebar-navigation" aria-label="Main navigation">
+          <p className="navigation-label">STUDY SPACE</p>
           {navigation.map((item) => (
             <a
               key={item.id}
@@ -405,13 +409,19 @@ export default function Homepage() {
         <div className="workspace-content">
           <section className="hero-banner" aria-labelledby="hero-heading">
             <div className="hero-banner-glow" aria-hidden="true" />
-            <HeroBooks side="left" />
-            <HeroBooks side="right" />
-            <div className="hero-content">
-              <p className="hero-eyebrow">WELCOME TO SSC PREP</p>
-              <h1 id="hero-heading">Your next SSC milestone starts here.</h1>
-              <p>Choose your exam, build your skills, and make every practice session count.</p>
-              <a className="hero-cta" href="#featured-exams" onClick={() => navigateTo("featured-exams")}>Explore exams <Icon name="arrow" size={16} /></a>
+            <div className="hero-layout">
+              <div className="hero-art-zone hero-art-left" aria-hidden="true">
+                <HeroBooks side="left" />
+              </div>
+              <div className="hero-content">
+                <p className="hero-eyebrow">WELCOME TO SSC PREP</p>
+                <h1 id="hero-heading">Your next SSC milestone starts here.</h1>
+                <p>Choose your exam, build your skills, and make every practice session count.</p>
+                <a className="hero-cta" href="#featured-exams" onClick={() => navigateTo("featured-exams")}>Explore exams <Icon name="arrow" size={16} /></a>
+              </div>
+              <div className="hero-art-zone hero-art-right" aria-hidden="true">
+                <HeroBooks side="right" />
+              </div>
             </div>
           </section>
 
@@ -507,14 +517,26 @@ export default function Homepage() {
                 </div>
                 <p className="rail-description">Search above to filter the supported categories.</p>
                 {matchingExams.length ? (
-                  <div className="exam-directory">
-                    {matchingExams.map((exam) => (
+                  <div className="exam-directory" id="exam-directory-items">
+                    {visibleDirectoryExams.map((exam) => (
                       <div className="exam-directory-item" key={exam.code}>
                         <span className="exam-monogram">{exam.code}</span>
                         <span className="exam-directory-copy"><strong>{exam.name}</strong><small>{exam.level}</small></span>
                       </div>
                     ))}
                   </div>
+                  {matchingExams.length > 4 && (
+                    <button
+                      className="exam-directory-toggle"
+                      type="button"
+                      aria-expanded={directoryExpanded}
+                      aria-controls="exam-directory-items"
+                      onClick={() => setShowAllExams((expanded) => !expanded)}
+                    >
+                      {directoryExpanded ? "Show fewer exams" : `View all ${matchingExams.length} exams`}
+                      <Icon name={directoryExpanded ? "collapse" : "arrow"} size={13} />
+                    </button>
+                  )}
                 ) : (
                   <div className="exam-directory-empty" role="status">
                     <p>No exam categories match this search.</p>
