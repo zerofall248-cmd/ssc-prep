@@ -355,8 +355,7 @@ export default function Homepage() {
             )}
           </div>
           <div className="toolbar-context">
-            <span className="toolbar-dot" />
-            <span>Study dashboard</span>
+            <span>SSC preparation workspace</span>
           </div>
         </header>
 
@@ -460,7 +459,7 @@ export default function Homepage() {
                   </div>
                   <span className="rail-small-count">{matchingExams.length}</span>
                 </div>
-                <p className="rail-description">Select a category to narrow the list from the search above.</p>
+                <p className="rail-description">Search above to filter the supported categories.</p>
                 {matchingExams.length ? (
                   <div className="exam-directory">
                     {matchingExams.map((exam) => (
