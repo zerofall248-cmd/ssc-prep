@@ -109,3 +109,121 @@ export const resources = [
     symbol: "current-affairs",
   },
 ] as const;
+
+
+export type ExamCardTone = "purple" | "blue" | "pink" | "lavender";
+
+export type FeaturedExam = {
+  code: "CGL" | "CH" | "MTS" | "GD";
+  name: string;
+  fullName: string;
+  stages?: string;
+  mocks: string;
+  pyqs: string;
+  tone: ExamCardTone;
+  popular?: boolean;
+};
+
+export const featuredExams: FeaturedExam[] = [
+  {
+    code: "CGL",
+    name: "SSC CGL",
+    fullName: "Combined Graduate Level",
+    stages: "Tier 1 · Tier 2",
+    mocks: "50+ Mocks",
+    pyqs: "120+ PYQs",
+    tone: "purple",
+    popular: true,
+  },
+  {
+    code: "CH",
+    name: "SSC CHSL",
+    fullName: "Combined Higher Secondary Level",
+    stages: "Tier 1 · Tier 2",
+    mocks: "42+ Mocks",
+    pyqs: "90+ PYQs",
+    tone: "blue",
+  },
+  {
+    code: "MTS",
+    name: "SSC MTS",
+    fullName: "Multi-Tasking Staff",
+    mocks: "38+ Mocks",
+    pyqs: "70+ PYQs",
+    tone: "pink",
+  },
+  {
+    code: "GD",
+    name: "SSC GD",
+    fullName: "General Duty Constable",
+    mocks: "35+ Mocks",
+    pyqs: "60+ PYQs",
+    tone: "lavender",
+  },
+];
+
+export type PopularTestTone = "purple" | "blue" | "pink" | "lavender";
+
+export type PopularTest = {
+  id: string;
+  title: string;
+  status: "Free" | "Premium";
+  attempts: string;
+  questions: string;
+  marks: string;
+  duration: string;
+  languages: string;
+  actionLabel: string;
+  tone: PopularTestTone;
+};
+
+export const popularTests: PopularTest[] = [
+  {
+    id: "cgl-tier-1-mock-01",
+    title: "SSC CGL Tier 1 — Full Mock 01",
+    status: "Free",
+    attempts: "24.5K attempts",
+    questions: "100 Ques",
+    marks: "200 Marks",
+    duration: "60 Mins",
+    languages: "EN / HI",
+    actionLabel: "Start Test",
+    tone: "purple",
+  },
+  {
+    id: "chsl-tier-1-mock-05",
+    title: "SSC CHSL Tier 1 — Mock 05",
+    status: "Premium",
+    attempts: "18.2K attempts",
+    questions: "100 Ques",
+    marks: "200 Marks",
+    duration: "60 Mins",
+    languages: "EN / HI",
+    actionLabel: "Start Test",
+    tone: "blue",
+  },
+  {
+    id: "mts-full-mock-03",
+    title: "SSC MTS — Full Mock 03",
+    status: "Premium",
+    attempts: "15.7K attempts",
+    questions: "90 Ques",
+    marks: "180 Marks",
+    duration: "45 Mins",
+    languages: "EN / HI",
+    actionLabel: "Start Test",
+    tone: "pink",
+  },
+  {
+    id: "cgl-2025-pyq-shift-2",
+    title: "SSC CGL 2025 PYQ — Shift 2",
+    status: "Free",
+    attempts: "31.0K attempts",
+    questions: "100 Ques",
+    marks: "200 Marks",
+    duration: "60 Mins",
+    languages: "EN / HI",
+    actionLabel: "Practice Paper",
+    tone: "lavender",
+  },
+];
