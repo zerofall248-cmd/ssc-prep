@@ -1070,7 +1070,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .featured-exam-card-top {
   position: relative;
-  min-height: 84px;
+  min-height: 64px;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -1081,7 +1081,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .featured-exam-card-pink { --exam-tint: #ffe5f0; --exam-ink: #b95488; }
 .featured-exam-card-lavender { --exam-tint: #e8e3ff; --exam-ink: #6856c8; }
 
-.exam-illustration { width: 108px; height: 73px; display: grid; place-items: center; }
+.exam-illustration { width: 94px; height: 62px; display: grid; place-items: center; }
 .exam-illustration svg { width: 100%; height: 100%; display: block; }
 .popular-exam-badge {
   position: absolute;
@@ -1096,7 +1096,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-weight: 800;
   line-height: 1.2;
 }
-.featured-exam-main { min-width: 0; padding: 12px 11px 4px; flex: 1; }
+.featured-exam-main { min-width: 0; padding: 8px 10px 2px; flex: 1; }
 .featured-exam-main h3 {
   margin: 0;
   color: var(--ink);
@@ -1106,19 +1106,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   letter-spacing: -.04em;
 }
 .featured-exam-full-name {
-  min-height: 31px;
-  margin: 5px 0 0;
+  margin: 3px 0 0;
   color: var(--muted-dark);
   font-size: 10px;
-  line-height: 1.45;
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
 .featured-exam-stages {
-  min-height: 20px;
-  margin-top: 8px;
+  margin-top: 4px;
   display: flex;
   align-items: center;
 }
+.featured-exam-stages:empty { display: none; }
 .featured-exam-stages > span:not(.exam-stage-placeholder) {
   padding: 3px 6px;
   color: var(--exam-ink);
@@ -1130,11 +1129,11 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 .exam-stage-placeholder { display: block; height: 17px; }
 .featured-exam-stats {
-  margin-top: 8px;
-  padding-top: 8px;
+  margin-top: 4px;
+  padding-top: 5px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 6px;
+  gap: 4px;
   border-top: 1px solid #f0eef8;
 }
 .featured-exam-stats > span {
@@ -1150,8 +1149,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 .featured-exam-stats svg { flex: 0 0 auto; opacity: .8; }
 .featured-exam-cta {
-  min-height: 34px;
-  margin: 9px 10px 10px;
+  min-height: 30px;
+  margin: 6px 9px 8px;
   padding: 0 9px;
   display: flex;
   align-items: center;
@@ -1195,7 +1194,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .popular-test-art {
   position: relative;
-  height: 78px;
+  height: 62px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1241,9 +1240,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 .test-status-free { color: #28795f; background: #e0f6ed; border: 1px solid #d2efe4; }
 .test-status-premium { color: #8d5a16; background: #fff0cf; border: 1px solid #ffe7b3; }
-.popular-test-copy { min-width: 0; padding: 11px 11px 8px; flex: 1; }
+.popular-test-copy { min-width: 0; padding: 7px 10px 4px; flex: 1; }
 .popular-test-copy h3 {
-  min-height: 37px;
   margin: 0;
   color: var(--ink);
   font-size: 12px;
@@ -1253,7 +1251,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   overflow-wrap: anywhere;
 }
 .popular-test-attempts {
-  margin: 6px 0 10px;
+  margin: 3px 0 5px;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -1265,7 +1263,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .test-metadata {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 7px 5px;
+  gap: 4px 4px;
 }
 .test-metadata > span {
   min-width: 0;
@@ -1280,18 +1278,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .test-metadata svg { flex: 0 0 auto; color: var(--test-ink); opacity: .9; }
 .test-preview-note {
   display: block;
-  margin-top: 10px;
+  margin-top: 5px;
   color: #807d92;
   font-size: 9px;
   font-weight: 700;
 }
 .popular-test-actions {
   margin-top: auto;
-  padding: 0 11px 11px;
+  padding: 0 10px 7px;
 }
 .test-cta {
   width: 100%;
-  min-height: 35px;
+  min-height: 31px;
   padding: 0 8px;
   display: flex;
   align-items: center;
@@ -1323,13 +1321,13 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 @media (max-width: 1240px) {
   .featured-exam-grid,
   .popular-test-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .featured-exam-card-top { min-height: 88px; }
-  .popular-test-art { height: 90px; }
+  .featured-exam-card-top { min-height: 70px; }
+  .popular-test-art { height: 66px; }
 }
 
 @media (max-width: 980px) {
-  .featured-exam-card-top { min-height: 82px; }
-  .popular-test-art { height: 84px; }
+  .featured-exam-card-top { min-height: 66px; }
+  .popular-test-art { height: 64px; }
 }
 
 @media (max-width: 760px) {
@@ -1337,12 +1335,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .section-view-all { margin-top: 3px; }
   .featured-exam-grid,
   .popular-test-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .featured-exam-card-top { min-height: 92px; }
+  .featured-exam-card-top { min-height: 72px; }
   .featured-exam-main { padding-inline: 12px; }
   .featured-exam-main h3 { font-size: 16px; }
   .featured-exam-full-name { font-size: 11px; min-height: 33px; }
   .featured-exam-stats > span { font-size: 10px; }
-  .popular-test-art { height: 98px; }
+  .popular-test-art { height: 72px; }
   .popular-test-copy { padding: 12px; }
   .popular-test-copy h3 { font-size: 13px; }
   .test-metadata > span { font-size: 10px; }
@@ -1353,18 +1351,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 @media (max-width: 520px) {
   .featured-exam-grid,
   .popular-test-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
-  .featured-exam-card-top { min-height: 75px; }
-  .exam-illustration { width: 92px; height: 68px; }
+  .featured-exam-card-top { min-height: 64px; }
+  .exam-illustration { width: 85px; height: 56px; }
   .featured-exam-main { padding: 10px 9px 4px; }
   .featured-exam-main h3 { font-size: 15px; }
   .featured-exam-full-name { font-size: 10px; }
   .featured-exam-stats { grid-template-columns: 1fr; gap: 5px; }
   .featured-exam-stats > span { font-size: 10px; }
   .featured-exam-cta { margin-inline: 8px; }
-  .popular-test-art { height: 78px; }
-  .popular-test-copy { padding: 10px 9px 8px; }
-  .popular-test-copy h3 { min-height: 53px; font-size: 12px; }
-  .test-metadata { gap: 8px 2px; }
+  .popular-test-art { height: 62px; }
+  .popular-test-copy { padding: 7px 9px 4px; }
+  .popular-test-copy h3 { font-size: 12px; }
+  .test-metadata { gap: 5px 2px; }
   .test-metadata > span { gap: 3px; font-size: 9px; }
   .test-metadata svg { width: 12px; height: 12px; }
   .popular-test-actions { padding-inline: 9px; }
@@ -1376,8 +1374,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 @media (max-width: 360px) {
   .featured-exam-grid,
   .popular-test-grid { grid-template-columns: 1fr; }
-  .featured-exam-card-top { min-height: 88px; }
+  .featured-exam-card-top { min-height: 68px; }
   .featured-exam-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .popular-test-art { height: 94px; }
+  .popular-test-art { height: 64px; }
   .popular-test-copy h3 { min-height: auto; }
 }
