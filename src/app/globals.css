@@ -1118,7 +1118,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   align-items: center;
 }
 .featured-exam-stages:empty { display: none; }
-.featured-exam-stages > span:not(.exam-stage-placeholder) {
+.featured-exam-stages > span {
   padding: 3px 6px;
   color: var(--exam-ink);
   background: var(--exam-tint);
@@ -1127,7 +1127,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-weight: 750;
   line-height: 1.25;
 }
-.exam-stage-placeholder { display: block; height: 17px; }
 .featured-exam-stats {
   margin-top: 4px;
   padding-top: 5px;
