@@ -485,7 +485,6 @@ export default function Homepage() {
                             <span><Icon name="clock" size={13} />{test.duration}</span>
                             <span><Icon name="languages" size={13} />{test.languages}</span>
                           </div>
-                          <span className="test-preview-note">Preview only · not playable</span>
                         </div>
                         <div className="popular-test-actions">
                           <button className="test-cta" type="button" aria-expanded={testNoticeId === test.id} aria-controls={"test-feedback-" + test.id} onClick={() => setTestNoticeId((current) => current === test.id ? null : test.id)}>
