@@ -1340,7 +1340,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .featured-exam-full-name { font-size: 11px; }
   .featured-exam-stats > span { font-size: 10px; }
   .popular-test-art { height: 64px; }
-  .popular-test-copy { padding: 12px; }
+  .popular-test-copy { padding: 8px 10px 4px; }
   .popular-test-copy h3 { font-size: 13px; }
   .test-metadata > span { font-size: 10px; }
   .test-cta, .featured-exam-cta { min-height: 40px; font-size: 11px; }
