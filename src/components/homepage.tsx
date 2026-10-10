@@ -95,20 +95,14 @@ export default function Homepage() {
       <section className="hero-section shell" aria-labelledby="hero-heading">
         <div className="hero-copy">
           <p className="hero-kicker"><span aria-hidden="true" /> A FOCUSED SPACE FOR SSC PREPARATION</p>
-          <h1 id="hero-heading">Prepare with focus.<br /><em>Make every session count.</em></h1>
+          <h1 id="hero-heading">A clearer way to prepare for <em>SSC exams.</em></h1>
           <p className="hero-description">
-            Find your exam and build a steady practice routine, one subject at a time.
+            Find your exam and see focused study options in one simple place.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#exams">Choose your exam <Arrow /></a>
-            <a className="hero-secondary-link" href="#practice">Explore practice options <Arrow /></a>
+            <a className="hero-secondary-link" href="#practice">Browse practice options <Arrow /></a>
           </div>
-        </div>
-        <div className="hero-index" aria-hidden="true">
-          <span>SSC</span>
-          <strong>PREP</strong>
-          <span className="hero-index-line" />
-          <span className="hero-index-caption">STUDY WITH INTENT</span>
         </div>
       </section>
 
@@ -182,7 +176,6 @@ export default function Homepage() {
                   <p>{set.text}</p>
                 </div>
                 <span className="practice-type">{set.tag}</span>
-                <span className="preview-label">Preview</span>
               </article>
             ))}
           </div>
