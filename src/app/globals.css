@@ -311,6 +311,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 .mobile-menu-button { display: none; }
+.toolbar-mobile-brand { display: none; }
 
 .search-results {
   position: absolute;
@@ -954,6 +955,15 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
   .toolbar { position: relative; top: auto; min-height: 58px; margin-bottom: 12px; padding: 0 12px; gap: 10px; }
   .mobile-menu-button { width: 36px; height: 36px; display: grid; place-items: center; flex: 0 0 auto; color: var(--ink); background: #f7f5ff; border: 1px solid #efecff; border-radius: 9px; }
+  .toolbar-mobile-brand {
+    min-width: 0;
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+  .toolbar-mobile-brand .brand { gap: 6px; }
+  .toolbar-mobile-brand .brand-mark { width: 27px; height: 27px; border-radius: 8px; }
+  .toolbar-mobile-brand .brand-mark svg { width: 20px; height: 20px; }
+  .toolbar-mobile-brand .brand-wordmark { font-size: 13px; letter-spacing: -.045em; }
   .toolbar-search-wrap { width: auto; min-width: 0; flex: 1; }
   .dashboard-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .utility-rail { margin-top: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 12px; }
@@ -996,6 +1006,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 @media (max-width: 360px) {
   .toolbar { gap: 7px; padding-inline: 9px; }
+  .toolbar-mobile-brand .brand-wordmark { display: none; }
+  .toolbar-mobile-brand .brand { gap: 0; }
   .toolbar-search-wrap { padding-inline: 8px; gap: 6px; }
   .toolbar-search-wrap input { font-size: 11px; }
   .hero-content h1 { font-size: 26px; }
