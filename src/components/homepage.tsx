@@ -404,20 +404,20 @@ export default function Homepage() {
         </header>
 
         <div className="workspace-content">
+          <section className="hero-banner" aria-labelledby="hero-heading">
+            <div className="hero-banner-glow" aria-hidden="true" />
+            <HeroBooks side="left" />
+            <HeroBooks side="right" />
+            <div className="hero-content">
+              <p className="hero-eyebrow">WELCOME TO SSC PREP</p>
+              <h1 id="hero-heading">Your next SSC milestone starts here.</h1>
+              <p>Choose your exam, build your skills, and make every practice session count.</p>
+              <a className="hero-cta" href="#featured-exams" onClick={() => navigateTo("featured-exams")}>Explore exams <Icon name="arrow" size={16} /></a>
+            </div>
+          </section>
+
           <div className="dashboard-grid">
             <div className="primary-column">
-              <section className="hero-banner" aria-labelledby="hero-heading">
-                <div className="hero-banner-glow" aria-hidden="true" />
-                <HeroBooks side="left" />
-                <HeroBooks side="right" />
-                <div className="hero-content">
-                  <p className="hero-eyebrow">WELCOME TO SSC PREP</p>
-                  <h1 id="hero-heading">Your next SSC milestone starts here.</h1>
-                  <p>Choose your exam, build your skills, and make every practice session count.</p>
-                  <a className="hero-cta" href="#featured-exams" onClick={() => navigateTo("featured-exams")}>Explore exams <Icon name="arrow" size={16} /></a>
-                </div>
-              </section>
-
               <section id="featured-exams" className="content-section featured-exams-section" aria-labelledby="featured-exams-heading">
                 <div className="content-section-heading section-heading-with-action">
                   <div>
