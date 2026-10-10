@@ -18,17 +18,16 @@ type LeaderboardPreviewEntry = {
   name: string;
   initials: string;
   points: number;
-  tone: "violet" | "blue" | "pink" | "mint" | "gold";
-  medal?: string;
+  tone: "violet" | "blue" | "pink";
 };
 
 // Demo content only: no learner profiles, scoring backend, or weekly activity feed exists yet.
 const leaderboardPreview: LeaderboardPreviewEntry[] = [
-  { rank: 1, name: "Learner One", initials: "LO", points: 2450, tone: "violet", medal: "🥇" },
-  { rank: 2, name: "Learner Two", initials: "LT", points: 2180, tone: "blue", medal: "🥈" },
-  { rank: 3, name: "Learner Three", initials: "L3", points: 1960, tone: "pink", medal: "🥉" },
-  { rank: 4, name: "Learner Four", initials: "L4", points: 1720, tone: "mint" },
-  { rank: 5, name: "Learner Five", initials: "L5", points: 1540, tone: "gold" },
+  { rank: 1, name: "Learner One", initials: "LO", points: 2450, tone: "violet" },
+  { rank: 2, name: "Learner Two", initials: "LT", points: 2180, tone: "blue" },
+  { rank: 3, name: "Learner Three", initials: "L3", points: 1960, tone: "pink" },
+  { rank: 4, name: "Learner Four", initials: "L4", points: 1720, tone: "violet" },
+  { rank: 5, name: "Learner Five", initials: "L5", points: 1540, tone: "blue" },
 ];
 
 function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
@@ -528,14 +527,14 @@ export default function Homepage() {
                     <h2 id="leaderboard-heading">Weekly Leaderboard</h2>
                     <p className="rail-description">Top learners this week.</p>
                   </div>
-                  <span className="leaderboard-heading-icon"><Icon name="trophy" size={19} /></span>
+                  <Icon name="trophy" size={19} />
                 </div>
                 <span className="leaderboard-demo-label">DEMO DATA · NOT LIVE</span>
                 <ol className="leaderboard-list" aria-label="Illustrative weekly leaderboard preview">
                   {leaderboardPreview.map((learner) => (
                     <li className={"leaderboard-row" + (learner.rank === 1 ? " leaderboard-row-first" : "")} key={learner.rank}>
                       <span className={"leaderboard-rank leaderboard-rank-" + learner.rank} aria-label={`Rank ${learner.rank}`}>
-                        {learner.medal ?? learner.rank}
+                        {learner.rank}
                       </span>
                       <span className={"leaderboard-avatar leaderboard-avatar-" + learner.tone} aria-hidden="true">{learner.initials}</span>
                       <span className="leaderboard-learner-name">{learner.name}</span>
@@ -546,7 +545,6 @@ export default function Homepage() {
                     </li>
                   ))}
                 </ol>
-                <p className="leaderboard-note">Sample names and scores for layout preview only. No live rankings are available.</p>
               </section>
 
               <section id="library" className="rail-panel library-panel" aria-labelledby="library-heading">
