@@ -1334,12 +1334,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .section-view-all { margin-top: 3px; }
   .featured-exam-grid,
   .popular-test-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .featured-exam-card-top { min-height: 72px; }
+  .featured-exam-card-top { min-height: 64px; }
   .featured-exam-main { padding-inline: 12px; }
   .featured-exam-main h3 { font-size: 16px; }
-  .featured-exam-full-name { font-size: 11px; min-height: 33px; }
+  .featured-exam-full-name { font-size: 11px; }
   .featured-exam-stats > span { font-size: 10px; }
-  .popular-test-art { height: 72px; }
+  .popular-test-art { height: 64px; }
   .popular-test-copy { padding: 12px; }
   .popular-test-copy h3 { font-size: 13px; }
   .test-metadata > span { font-size: 10px; }
@@ -1352,7 +1352,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .popular-test-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .featured-exam-card-top { min-height: 64px; }
   .exam-illustration { width: 85px; height: 56px; }
-  .featured-exam-main { padding: 10px 9px 4px; }
+  .featured-exam-main { padding: 8px 9px 2px; }
   .featured-exam-main h3 { font-size: 15px; }
   .featured-exam-full-name { font-size: 10px; }
   .featured-exam-stats { grid-template-columns: 1fr; gap: 5px; }
@@ -1373,7 +1373,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 @media (max-width: 360px) {
   .featured-exam-grid,
   .popular-test-grid { grid-template-columns: 1fr; }
-  .featured-exam-card-top { min-height: 68px; }
+  .featured-exam-card-top { min-height: 64px; }
   .featured-exam-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .popular-test-art { height: 64px; }
   .popular-test-copy h3 { min-height: auto; }
