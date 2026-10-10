@@ -497,8 +497,9 @@ export default function Homepage() {
                 </div>
                 <p className="catalogue-disclaimer">Test titles, Free/Premium labels, and attempt counts are illustrative display data, not verified access status or live activity. These tests cannot be launched in this version.</p>
               </section>
+            </div>
 
-              <aside className="utility-rail" aria-label="Study shortcuts">
+            <aside className="utility-rail" aria-label="Study shortcuts">
               <section id="exams" className="rail-panel exam-panel" aria-labelledby="exams-heading">
                 <div className="rail-heading">
                   <div>
