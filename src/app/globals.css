@@ -527,6 +527,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     padding: 0 0 12px;
   }
 
+  .mobile-navigation-open { display: flex; flex-direction: column; }
   .mobile-navigation[hidden] { display: none !important; }
 
   .mobile-navigation a {
