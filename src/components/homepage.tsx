@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState, type FocusEvent } from "react";
 import { exams, featuredExams, popularTests, resources, type ExamItem, type FeaturedExam, type SubjectVisual } from "@/data/homepage";
 
-type IconName = "home" | "exam" | "practice" | "subjects" | "library" | "search" | "menu" | "collapse" | "expand" | "arrow" | "sparkle" | "book" | "clock" | "chart" | "languages";
+type IconName = "home" | "exam" | "practice" | "subjects" | "library" | "search" | "menu" | "collapse" | "expand" | "arrow" | "sparkle" | "book" | "clock" | "chart" | "languages" | "trophy";
 
 const navigation = [
   { id: "top", label: "Home", icon: "home" },
@@ -12,6 +12,24 @@ const navigation = [
   { id: "exams", label: "All exams", icon: "subjects" },
   { id: "library", label: "Study library", icon: "library" },
 ] as const;
+
+type LeaderboardPreviewEntry = {
+  rank: number;
+  name: string;
+  initials: string;
+  points: number;
+  tone: "violet" | "blue" | "pink" | "mint" | "gold";
+  medal?: string;
+};
+
+// Demo content only: no learner profiles, scoring backend, or weekly activity feed exists yet.
+const leaderboardPreview: LeaderboardPreviewEntry[] = [
+  { rank: 1, name: "Learner One", initials: "LO", points: 2450, tone: "violet", medal: "🥇" },
+  { rank: 2, name: "Learner Two", initials: "LT", points: 2180, tone: "blue", medal: "🥈" },
+  { rank: 3, name: "Learner Three", initials: "L3", points: 1960, tone: "pink", medal: "🥉" },
+  { rank: 4, name: "Learner Four", initials: "L4", points: 1720, tone: "mint" },
+  { rank: 5, name: "Learner Five", initials: "L5", points: 1540, tone: "gold" },
+];
 
 function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
   return (
@@ -31,6 +49,7 @@ function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
       {name === "clock" && <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3.5 2" /></>}
       {name === "chart" && <><path d="M4 19V5M4 19h16" /><rect x="7" y="11" width="3" height="5" rx="1" /><rect x="12" y="8" width="3" height="8" rx="1" /><rect x="17" y="5" width="3" height="11" rx="1" /></>}
       {name === "languages" && <><path d="M4 5h10M9 3v2M6 5c.8 4.1 3.4 6.8 7 8M13 5c-.7 3.6-3.1 6.8-7 9" /><path d="m14 20 3.5-9 3.5 9M15.2 17h4.6" /></>}
+      {name === "trophy" && <><path d="M8 4h8v4.5a4 4 0 0 1-8 0V4Z" /><path d="M8 6H4v2a4 4 0 0 0 4 4M16 6h4v2a4 4 0 0 1-4 4M12 13v4M8 20h8M9 17h6v3H9z" /></>}
     </svg>
   );
 }
@@ -418,6 +437,7 @@ export default function Homepage() {
                 </div>
               </section>
 
+              <div id="exams" className="exam-section-anchor">
               <section id="featured-exams" className="content-section featured-exams-section" aria-labelledby="featured-exams-heading">
                 <div className="content-section-heading section-heading-with-action">
                   <div>
@@ -454,6 +474,7 @@ export default function Homepage() {
                 </div>
                 <p className="catalogue-disclaimer">Mock and PYQ figures are catalogue preview labels, not verified live inventory. Full exam-specific pages are not available yet.</p>
               </section>
+              </div>
 
               <section id="popular-tests" className="content-section popular-tests-section" aria-labelledby="popular-tests-heading">
                 <div className="content-section-heading section-heading-with-action">
@@ -500,31 +521,32 @@ export default function Homepage() {
             </div>
 
             <aside className="utility-rail" aria-label="Study shortcuts">
-              <section id="exams" className="rail-panel exam-panel" aria-labelledby="exams-heading">
-                <div className="rail-heading">
+              <section id="weekly-leaderboard" className="rail-panel leaderboard-panel" aria-labelledby="leaderboard-heading">
+                <div className="rail-heading leaderboard-heading">
                   <div>
-                    <p className="section-kicker">FIND YOUR DIRECTION</p>
-                    <h2 id="exams-heading">Explore exams</h2>
+                    <p className="section-kicker">THIS WEEK</p>
+                    <h2 id="leaderboard-heading">Weekly Leaderboard</h2>
+                    <p className="rail-description">Top learners this week.</p>
                   </div>
-                  <span className="rail-small-count">{matchingExams.length}</span>
+                  <span className="leaderboard-heading-icon"><Icon name="trophy" size={19} /></span>
                 </div>
-                <p className="rail-description">Search above to filter the supported categories.</p>
-                {matchingExams.length ? (
-                  <div className="exam-directory">
-                    {matchingExams.map((exam) => (
-                      <div className="exam-directory-item" key={exam.code}>
-                        <span className="exam-monogram">{exam.code}</span>
-                        <span className="exam-directory-copy"><strong>{exam.name}</strong><small>{exam.level}</small></span>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="exam-directory-empty" role="status">
-                    <p>No exam categories match this search.</p>
-                    <button type="button" onClick={() => setQuery("")}>Clear search</button>
-                  </div>
-                )}
-                <p className="exam-panel-footnote">Use official SSC notices for current eligibility and dates.</p>
+                <span className="leaderboard-demo-label">DEMO DATA · NOT LIVE</span>
+                <ol className="leaderboard-list" aria-label="Illustrative weekly leaderboard preview">
+                  {leaderboardPreview.map((learner) => (
+                    <li className={"leaderboard-row" + (learner.rank === 1 ? " leaderboard-row-first" : "")} key={learner.rank}>
+                      <span className={"leaderboard-rank leaderboard-rank-" + learner.rank} aria-label={`Rank ${learner.rank}`}>
+                        {learner.medal ?? learner.rank}
+                      </span>
+                      <span className={"leaderboard-avatar leaderboard-avatar-" + learner.tone} aria-hidden="true">{learner.initials}</span>
+                      <span className="leaderboard-learner-name">{learner.name}</span>
+                      <span className="leaderboard-points">
+                        <strong>{learner.points.toLocaleString("en-IN")}</strong>
+                        <small>pts</small>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+                <p className="leaderboard-note">Sample names and scores for layout preview only. No live rankings are available.</p>
               </section>
 
               <section id="library" className="rail-panel library-panel" aria-labelledby="library-heading">
