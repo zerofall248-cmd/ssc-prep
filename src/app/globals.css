@@ -310,14 +310,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   white-space: nowrap;
 }
 
-.toolbar-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #73caa7;
-  box-shadow: 0 0 0 4px #e6f7ef;
-}
-
 .mobile-menu-button { display: none; }
 
 .search-results {
