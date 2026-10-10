@@ -517,26 +517,28 @@ export default function Homepage() {
                 </div>
                 <p className="rail-description">Search above to filter the supported categories.</p>
                 {matchingExams.length ? (
-                  <div className="exam-directory" id="exam-directory-items">
-                    {visibleDirectoryExams.map((exam) => (
-                      <div className="exam-directory-item" key={exam.code}>
-                        <span className="exam-monogram">{exam.code}</span>
-                        <span className="exam-directory-copy"><strong>{exam.name}</strong><small>{exam.level}</small></span>
-                      </div>
-                    ))}
-                  </div>
-                  {matchingExams.length > 4 && (
-                    <button
-                      className="exam-directory-toggle"
-                      type="button"
-                      aria-expanded={directoryExpanded}
-                      aria-controls="exam-directory-items"
-                      onClick={() => setShowAllExams((expanded) => !expanded)}
-                    >
-                      {directoryExpanded ? "Show fewer exams" : `View all ${matchingExams.length} exams`}
-                      <Icon name={directoryExpanded ? "collapse" : "arrow"} size={13} />
-                    </button>
-                  )}
+                  <>
+                    <div className="exam-directory" id="exam-directory-items">
+                      {visibleDirectoryExams.map((exam) => (
+                        <div className="exam-directory-item" key={exam.code}>
+                          <span className="exam-monogram">{exam.code}</span>
+                          <span className="exam-directory-copy"><strong>{exam.name}</strong><small>{exam.level}</small></span>
+                        </div>
+                      ))}
+                    </div>
+                    {matchingExams.length > 4 && (
+                      <button
+                        className="exam-directory-toggle"
+                        type="button"
+                        aria-expanded={directoryExpanded}
+                        aria-controls="exam-directory-items"
+                        onClick={() => setShowAllExams((expanded) => !expanded)}
+                      >
+                        {directoryExpanded ? "Show fewer exams" : `View all ${matchingExams.length} exams`}
+                        <Icon name={directoryExpanded ? "collapse" : "arrow"} size={13} />
+                      </button>
+                    )}
+                  </>
                 ) : (
                   <div className="exam-directory-empty" role="status">
                     <p>No exam categories match this search.</p>
