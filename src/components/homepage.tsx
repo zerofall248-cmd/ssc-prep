@@ -273,7 +273,7 @@ export default function Homepage() {
   return (
     <div className={"app-frame" + (sidebarCollapsed ? " sidebar-collapsed" : "")}>
       {menuOpen && <button className="drawer-backdrop" type="button" aria-label="Close navigation menu" onClick={closeMenu} />}
-      <aside className={"sidebar" + (menuOpen ? " sidebar-open" : "")} aria-label="Primary navigation">
+      <aside id="primary-sidebar" className={"sidebar" + (menuOpen ? " sidebar-open" : "")} aria-label="Primary navigation">
         <div className="sidebar-brand-row">
           <Brand onNavigate={() => navigateTo("top")} />
           <button className="sidebar-collapse" type="button" aria-label={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"} onClick={() => setSidebarCollapsed((collapsed) => !collapsed)} title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}>
