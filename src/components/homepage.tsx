@@ -325,7 +325,6 @@ export default function Homepage() {
         </div>
 
         <nav className="sidebar-navigation" aria-label="Main navigation">
-          <p className="navigation-label">STUDY SPACE</p>
           {navigation.map((item) => (
             <a
               key={item.id}
@@ -421,7 +420,6 @@ export default function Homepage() {
               <section id="featured-exams" className="content-section featured-exams-section" aria-labelledby="featured-exams-heading">
                 <div className="content-section-heading section-heading-with-action">
                   <div>
-                    <p className="section-kicker">FIND YOUR DIRECTION</p>
                     <h2 id="featured-exams-heading">Choose Your SSC Exam</h2>
                     <p className="section-subtitle">Start focused preparation for your target examination.</p>
                   </div>
@@ -460,7 +458,6 @@ export default function Homepage() {
               <section id="popular-tests" className="content-section popular-tests-section" aria-labelledby="popular-tests-heading">
                 <div className="content-section-heading section-heading-with-action">
                   <div>
-                    <p className="section-kicker">PRACTISE WITH PURPOSE</p>
                     <h2 id="popular-tests-heading">Popular SSC Tests</h2>
                     <p className="section-subtitle">Top-rated tests chosen by aspirants.</p>
                   </div>
@@ -504,7 +501,6 @@ export default function Homepage() {
               <section id="exams" className="rail-panel exam-panel" aria-labelledby="exams-heading">
                 <div className="rail-heading">
                   <div>
-                    <p className="section-kicker">FIND YOUR DIRECTION</p>
                     <h2 id="exams-heading">Explore exams</h2>
                   </div>
                   <span className="rail-small-count">{matchingExams.length}</span>
@@ -531,7 +527,6 @@ export default function Homepage() {
               <section id="library" className="rail-panel library-panel" aria-labelledby="library-heading">
                 <div className="rail-heading">
                   <div>
-                    <p className="section-kicker">COMING TO THE LIBRARY</p>
                     <h2 id="library-heading">Study library</h2>
                   </div>
                   <Icon name="book" size={19} />
