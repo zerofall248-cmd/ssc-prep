@@ -238,7 +238,6 @@ export default function Homepage() {
   const [searchFocused, setSearchFocused] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
   const [testNoticeId, setTestNoticeId] = useState<string | null>(null);
-  const [showAllExams, setShowAllExams] = useState(false);
 
   const matchingExams = useMemo(() => {
     const term = query.trim().toLowerCase();
@@ -251,8 +250,6 @@ export default function Homepage() {
   }, [query]);
 
   const suggestedExams = matchingExams.slice(0, 5);
-  const directoryExpanded = showAllExams && matchingExams.length > 4;
-  const visibleDirectoryExams = directoryExpanded ? matchingExams : matchingExams.slice(0, 4);
   const searchPanelOpen = searchFocused && query.trim().length > 0;
 
   useEffect(() => {
@@ -407,29 +404,24 @@ export default function Homepage() {
         </header>
 
         <div className="workspace-content">
-          <section className="hero-banner" aria-labelledby="hero-heading">
-            <div className="hero-banner-glow" aria-hidden="true" />
-            <div className="hero-layout">
-              <div className="hero-art-zone hero-art-left" aria-hidden="true">
-                <HeroBooks side="left" />
-              </div>
-              <div className="hero-content">
-                <p className="hero-eyebrow">WELCOME TO SSC PREP</p>
-                <h1 id="hero-heading">Your next SSC milestone starts here.</h1>
-                <p>Choose your exam, build your skills, and make every practice session count.</p>
-                <a className="hero-cta" href="#featured-exams" onClick={() => navigateTo("featured-exams")}>Explore exams <Icon name="arrow" size={16} /></a>
-              </div>
-              <div className="hero-art-zone hero-art-right" aria-hidden="true">
-                <HeroBooks side="right" />
-              </div>
-            </div>
-          </section>
-
           <div className="dashboard-grid">
             <div className="primary-column">
+              <section className="hero-banner" aria-labelledby="hero-heading">
+                <div className="hero-banner-glow" aria-hidden="true" />
+                <HeroBooks side="left" />
+                <HeroBooks side="right" />
+                <div className="hero-content">
+                  <p className="hero-eyebrow">WELCOME TO SSC PREP</p>
+                  <h1 id="hero-heading">Your next SSC milestone starts here.</h1>
+                  <p>Choose your exam, build your skills, and make every practice session count.</p>
+                  <a className="hero-cta" href="#featured-exams" onClick={() => navigateTo("featured-exams")}>Explore exams <Icon name="arrow" size={16} /></a>
+                </div>
+              </section>
+
               <section id="featured-exams" className="content-section featured-exams-section" aria-labelledby="featured-exams-heading">
                 <div className="content-section-heading section-heading-with-action">
                   <div>
+                    <p className="section-kicker">FIND YOUR DIRECTION</p>
                     <h2 id="featured-exams-heading">Choose Your SSC Exam</h2>
                     <p className="section-subtitle">Start focused preparation for your target examination.</p>
                   </div>
@@ -446,11 +438,9 @@ export default function Homepage() {
                       <div className="featured-exam-main">
                         <h3>{exam.name}</h3>
                         <p className="featured-exam-full-name">{exam.fullName}</p>
-                        {exam.stages && (
-                          <div className="featured-exam-stages">
-                            <span>{exam.stages}</span>
-                          </div>
-                        )}
+                        <div className="featured-exam-stages">
+                          {exam.stages ? <span>{exam.stages}</span> : <span className="exam-stage-placeholder" aria-hidden="true" />}
+                        </div>
                         <div className="featured-exam-stats">
                           <span><Icon name="book" size={13} />{exam.mocks}</span>
                           <span><Icon name="chart" size={13} />{exam.pyqs}</span>
@@ -468,6 +458,7 @@ export default function Homepage() {
               <section id="popular-tests" className="content-section popular-tests-section" aria-labelledby="popular-tests-heading">
                 <div className="content-section-heading section-heading-with-action">
                   <div>
+                    <p className="section-kicker">PRACTISE WITH PURPOSE</p>
                     <h2 id="popular-tests-heading">Popular SSC Tests</h2>
                     <p className="section-subtitle">Top-rated tests chosen by aspirants.</p>
                   </div>
@@ -492,6 +483,7 @@ export default function Homepage() {
                             <span><Icon name="clock" size={13} />{test.duration}</span>
                             <span><Icon name="languages" size={13} />{test.languages}</span>
                           </div>
+                          <span className="test-preview-note">Preview only · not playable</span>
                         </div>
                         <div className="popular-test-actions">
                           <button className="test-cta" type="button" aria-expanded={testNoticeId === test.id} aria-controls={"test-feedback-" + test.id} onClick={() => setTestNoticeId((current) => current === test.id ? null : test.id)}>
@@ -511,34 +503,21 @@ export default function Homepage() {
               <section id="exams" className="rail-panel exam-panel" aria-labelledby="exams-heading">
                 <div className="rail-heading">
                   <div>
+                    <p className="section-kicker">FIND YOUR DIRECTION</p>
                     <h2 id="exams-heading">Explore exams</h2>
                   </div>
                   <span className="rail-small-count">{matchingExams.length}</span>
                 </div>
                 <p className="rail-description">Search above to filter the supported categories.</p>
                 {matchingExams.length ? (
-                  <>
-                    <div className="exam-directory" id="exam-directory-items">
-                      {visibleDirectoryExams.map((exam) => (
-                        <div className="exam-directory-item" key={exam.code}>
-                          <span className="exam-monogram">{exam.code}</span>
-                          <span className="exam-directory-copy"><strong>{exam.name}</strong><small>{exam.level}</small></span>
-                        </div>
-                      ))}
-                    </div>
-                    {matchingExams.length > 4 && (
-                      <button
-                        className="exam-directory-toggle"
-                        type="button"
-                        aria-expanded={directoryExpanded}
-                        aria-controls="exam-directory-items"
-                        onClick={() => setShowAllExams((expanded) => !expanded)}
-                      >
-                        {directoryExpanded ? "Show fewer exams" : `View all ${matchingExams.length} exams`}
-                        <Icon name={directoryExpanded ? "collapse" : "arrow"} size={13} />
-                      </button>
-                    )}
-                  </>
+                  <div className="exam-directory">
+                    {matchingExams.map((exam) => (
+                      <div className="exam-directory-item" key={exam.code}>
+                        <span className="exam-monogram">{exam.code}</span>
+                        <span className="exam-directory-copy"><strong>{exam.name}</strong><small>{exam.level}</small></span>
+                      </div>
+                    ))}
+                  </div>
                 ) : (
                   <div className="exam-directory-empty" role="status">
                     <p>No exam categories match this search.</p>
@@ -551,6 +530,7 @@ export default function Homepage() {
               <section id="library" className="rail-panel library-panel" aria-labelledby="library-heading">
                 <div className="rail-heading">
                   <div>
+                    <p className="section-kicker">COMING TO THE LIBRARY</p>
                     <h2 id="library-heading">Study library</h2>
                   </div>
                   <Icon name="book" size={19} />
