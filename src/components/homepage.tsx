@@ -311,6 +311,7 @@ export default function Homepage() {
           <button className="mobile-menu-button" type="button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="primary-sidebar" onClick={() => setMenuOpen((open) => !open)}>
             <Icon name="menu" size={21} />
           </button>
+          <div className="toolbar-mobile-brand"><Brand onNavigate={() => navigateTo("top")} /></div>
           <div className="toolbar-search-wrap" onBlur={handleSearchBlur}>
             <Icon name="search" size={18} />
             <label className="sr-only" htmlFor="exam-search">Search SSC exams</label>
