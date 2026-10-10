@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useMemo, useState, type FocusEvent } from "react";
-import { exams, practiceSets, resources, subjects, type ExamItem, type SubjectVisual } from "@/data/homepage";
+import { exams, featuredExams, popularTests, resources, type ExamItem, type FeaturedExam, type SubjectVisual } from "@/data/homepage";
 
-type IconName = "home" | "exam" | "practice" | "subjects" | "library" | "search" | "menu" | "collapse" | "expand" | "arrow" | "sparkle" | "book";
+type IconName = "home" | "exam" | "practice" | "subjects" | "library" | "search" | "menu" | "collapse" | "expand" | "arrow" | "sparkle" | "book" | "clock" | "chart" | "languages";
 
 const navigation = [
   { id: "top", label: "Home", icon: "home" },
-  { id: "exams", label: "Exams", icon: "exam" },
-  { id: "practice", label: "Practice", icon: "practice" },
-  { id: "subjects", label: "Subjects", icon: "subjects" },
+  { id: "featured-exams", label: "Exams", icon: "exam" },
+  { id: "popular-tests", label: "Practice", icon: "practice" },
+  { id: "exams", label: "All exams", icon: "subjects" },
   { id: "library", label: "Study library", icon: "library" },
 ] as const;
 
@@ -28,6 +28,9 @@ function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
       {name === "arrow" && <><path d="M4 12h15M13 6l6 6-6 6" /></>}
       {name === "sparkle" && <><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" /><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z" /></>}
       {name === "book" && <><path d="M3.5 5.5A2.5 2.5 0 0 1 6 3h5v17H6a2.5 2.5 0 0 0-2.5 2V5.5Z" /><path d="M20.5 5.5A2.5 2.5 0 0 0 18 3h-5v17h5a2.5 2.5 0 0 1 2.5 2V5.5Z" /></>}
+      {name === "clock" && <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3.5 2" /></>}
+      {name === "chart" && <><path d="M4 19V5M4 19h16" /><rect x="7" y="11" width="3" height="5" rx="1" /><rect x="12" y="8" width="3" height="8" rx="1" /><rect x="17" y="5" width="3" height="11" rx="1" /></>}
+      {name === "languages" && <><path d="M4 5h10M9 3v2M6 5c.8 4.1 3.4 6.8 7 8M13 5c-.7 3.6-3.1 6.8-7 9" /><path d="m14 20 3.5-9 3.5 9M15.2 17h4.6" /></>}
     </svg>
   );
 }
@@ -114,6 +117,51 @@ function HeroBooks({ side }: { side: "left" | "right" }) {
   );
 }
 
+function ExamIllustration({ code }: { code: FeaturedExam["code"] }) {
+  return (
+    <div className={"exam-illustration exam-illustration-" + code.toLowerCase()} aria-hidden="true">
+      <svg viewBox="0 0 112 76" fill="none">
+        {code === "CGL" && (
+          <>
+            <ellipse cx="56" cy="65" rx="33" ry="5" fill="#7A69D8" opacity=".18" />
+            <rect x="19" y="49" width="68" height="12" rx="4" fill="#7262DE" />
+            <rect x="24" y="44" width="60" height="8" rx="3" fill="#AA9FF5" />
+            <rect x="29" y="35" width="50" height="9" rx="3" fill="#F1C3DE" />
+            <path d="M49 24 56 11l7 13 14 2-10 10 2 14-13-7-13 7 2-14-10-10 14-2Z" fill="#FFC96B" stroke="#FFF2C7" strokeWidth="1.5" strokeLinejoin="round" />
+          </>
+        )}
+        {code === "CH" && (
+          <>
+            <rect x="29" y="14" width="54" height="52" rx="8" fill="#FFFFFF" opacity=".82" />
+            <rect x="43" y="9" width="27" height="12" rx="5" fill="#8BA8F8" />
+            <path d="m39 33 4 4 7-8M54 34h17M39 47l4 4 7-8M54 48h17" stroke="#6E79D9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="81" cy="53" r="10" fill="#8BDCC8" />
+            <path d="m76 53 3.5 3.5 6-7" stroke="#328B78" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </>
+        )}
+        {code === "MTS" && (
+          <>
+            <rect x="26" y="13" width="59" height="52" rx="8" fill="#FFFFFF" opacity=".84" />
+            <rect x="37" y="25" width="9" height="9" rx="2.5" fill="#F1A6CB" />
+            <rect x="37" y="40" width="9" height="9" rx="2.5" fill="#9ADFCB" />
+            <path d="M53 29h20M53 44h20M37 56h35" stroke="#8A82D8" strokeWidth="2.4" strokeLinecap="round" />
+            <circle cx="83" cy="16" r="8" fill="#FFD16E" />
+            <path d="m79.5 16 2.5 2.5 4-5" stroke="#946A20" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+          </>
+        )}
+        {code === "GD" && (
+          <>
+            <path d="M56 9 82 19v19c0 13-11 23-26 30C41 61 30 51 30 38V19L56 9Z" fill="#FFFFFF" opacity=".86" />
+            <path d="M56 17 74 24v14c0 9-7.5 17-18 23-10.5-6-18-14-18-23V24l18-7Z" fill="#9D8AF0" />
+            <path d="m46 39 7 7 14-16" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="83" cy="17" r="6" fill="#FFC96B" />
+          </>
+        )}
+      </svg>
+    </div>
+  );
+}
+
 function LearningArtwork({ variant }: { variant: SubjectVisual }) {
   return (
     <div className={"learning-artwork artwork-" + variant} aria-hidden="true">
@@ -189,7 +237,7 @@ export default function Homepage() {
   const [query, setQuery] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
-  const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
+  const [testNoticeId, setTestNoticeId] = useState<string | null>(null);
 
   const matchingExams = useMemo(() => {
     const term = query.trim().toLowerCase();
@@ -203,10 +251,6 @@ export default function Homepage() {
 
   const suggestedExams = matchingExams.slice(0, 5);
   const searchPanelOpen = searchFocused && query.trim().length > 0;
-  const visiblePractice = useMemo(
-    () => selectedSubject ? practiceSets.filter((item) => item.tag === selectedSubject) : practiceSets,
-    [selectedSubject],
-  );
 
   useEffect(() => {
     const sectionIds = navigation.map((item) => item.id).filter((id) => id !== "top");
@@ -251,7 +295,7 @@ export default function Homepage() {
     closeMenu();
   }
 
-  function selectExam(exam: ExamItem) {
+  function selectExam(exam: Pick<ExamItem, "name">) {
     setQuery(exam.name);
     setSearchFocused(false);
     setActiveSection("exams");
@@ -259,10 +303,9 @@ export default function Homepage() {
     document.getElementById("exams")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function focusPractice(tag: string) {
-    setSelectedSubject((current) => current === tag ? null : tag);
-    setActiveSection("practice");
-    document.getElementById("practice")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  function exploreFeaturedExam(exam: FeaturedExam) {
+    const listedExam = exams.find((item) => item.code === exam.code);
+    selectExam(listedExam ?? { name: exam.name });
   }
 
   function handleSearchBlur(event: FocusEvent<HTMLDivElement>) {
@@ -371,87 +414,91 @@ export default function Homepage() {
                   <p className="hero-eyebrow">WELCOME TO SSC PREP</p>
                   <h1 id="hero-heading">Your next SSC milestone starts here.</h1>
                   <p>Choose your exam, build your skills, and make every practice session count.</p>
-                  <a className="hero-cta" href="#exams" onClick={() => navigateTo("exams")}>Explore exams <Icon name="arrow" size={16} /></a>
+                  <a className="hero-cta" href="#featured-exams" onClick={() => navigateTo("featured-exams")}>Explore exams <Icon name="arrow" size={16} /></a>
                 </div>
               </section>
 
-              <section id="subjects" className="content-section subjects-section" aria-labelledby="subjects-heading">
-                <div className="content-section-heading">
+              <section id="featured-exams" className="content-section featured-exams-section" aria-labelledby="featured-exams-heading">
+                <div className="content-section-heading section-heading-with-action">
                   <div>
-                    <p className="section-kicker">BUILD YOUR FOUNDATION</p>
-                    <h2 id="subjects-heading">Popular subjects</h2>
+                    <p className="section-kicker">FIND YOUR DIRECTION</p>
+                    <h2 id="featured-exams-heading">Choose Your SSC Exam</h2>
+                    <p className="section-subtitle">Start focused preparation for your target examination.</p>
                   </div>
-                  <span className="section-count">04 subjects</span>
+                  <a className="section-view-all" href="#exams" onClick={() => navigateTo("exams")}>View all exams <Icon name="arrow" size={15} /></a>
                 </div>
-                <div className="subject-grid">
-                  {subjects.map((subject) => (
-                    <button
-                      type="button"
-                      key={subject.id}
-                      className={"subject-card" + (selectedSubject === subject.practiceTag ? " subject-card-selected" : "")}
-                      onClick={() => focusPractice(subject.practiceTag)}
-                      aria-pressed={selectedSubject === subject.practiceTag}
-                      aria-label={"Show sample practice for " + subject.name}
-                    >
-                      <LearningArtwork variant={subject.visual} />
-                      <span className="subject-card-copy">
-                        <strong>{subject.name}</strong>
-                        <span className="subject-description">{subject.text}</span>
-                      </span>
-                      <span className="subject-card-footer">
-                        <span>{selectedSubject === subject.practiceTag ? "Selected" : "See practice"}</span>
-                        <Icon name="arrow" size={14} />
-                      </span>
-                    </button>
+
+                <div className="featured-exam-grid">
+                  {featuredExams.map((exam) => (
+                    <article className={"featured-exam-card featured-exam-card-" + exam.tone} key={exam.code}>
+                      <div className="featured-exam-card-top">
+                        <ExamIllustration code={exam.code} />
+                        {exam.popular && <span className="popular-exam-badge">Popular</span>}
+                      </div>
+                      <div className="featured-exam-main">
+                        <h3>{exam.name}</h3>
+                        <p className="featured-exam-full-name">{exam.fullName}</p>
+                        <div className="featured-exam-stages">
+                          {exam.stages ? <span>{exam.stages}</span> : <span className="exam-stage-placeholder" aria-hidden="true" />}
+                        </div>
+                        <div className="featured-exam-stats">
+                          <span><Icon name="book" size={13} />{exam.mocks}</span>
+                          <span><Icon name="chart" size={13} />{exam.pyqs}</span>
+                        </div>
+                      </div>
+                      <button className="featured-exam-cta" type="button" onClick={() => exploreFeaturedExam(exam)}>
+                        Explore Exam <Icon name="arrow" size={15} />
+                      </button>
+                    </article>
                   ))}
                 </div>
+                <p className="catalogue-disclaimer">Mock and PYQ figures are catalogue preview labels, not verified live inventory. Full exam-specific pages are not available yet.</p>
               </section>
 
-              <section id="practice" className="content-section practice-section" aria-labelledby="practice-heading">
-                <div className="content-section-heading">
+              <section id="popular-tests" className="content-section popular-tests-section" aria-labelledby="popular-tests-heading">
+                <div className="content-section-heading section-heading-with-action">
                   <div>
-                    <p className="section-kicker">A GOOD PLACE TO BEGIN</p>
-                    <h2 id="practice-heading">Recommended practice</h2>
+                    <p className="section-kicker">PRACTISE WITH PURPOSE</p>
+                    <h2 id="popular-tests-heading">Popular SSC Tests</h2>
+                    <p className="section-subtitle">Top-rated tests chosen by aspirants.</p>
                   </div>
-                  {selectedSubject ? (
-                    <button type="button" className="clear-filter" onClick={() => setSelectedSubject(null)}>Show all <span aria-hidden="true">↗</span></button>
-                  ) : (
-                    <span className="preview-count">Sample previews</span>
-                  )}
+                  <span className="preview-count">4 test previews</span>
                 </div>
-                {selectedSubject && <p className="practice-filter-note">Showing sample previews for <strong>{selectedSubject}</strong>.</p>}
-                {visiblePractice.length ? (
-                  <div className="practice-grid">
-                    {visiblePractice.map((item) => (
-                      <article className="practice-card" key={item.number}>
-                        <div className={"practice-artwork practice-artwork-" + item.visual}>
-                          <LearningArtwork variant={item.visual} />
-                          <span className="preview-stamp">PREVIEW</span>
+                <div className="popular-test-grid">
+                  {popularTests.map((test, index) => {
+                    const visual: SubjectVisual[] = ["reasoning", "quantitative", "english", "awareness"];
+                    return (
+                      <article className={"popular-test-card popular-test-card-" + test.tone} key={test.id}>
+                        <div className={"popular-test-art popular-test-art-" + test.tone}>
+                          <span className="test-art-code">{test.id.startsWith("chsl") ? "CHSL" : test.id.startsWith("mts") ? "MTS" : "CGL"}</span>
+                          <LearningArtwork variant={visual[index]} />
+                          <span className={"test-status test-status-" + test.status.toLowerCase()}>{test.status}</span>
                         </div>
-                        <div className="practice-card-copy">
-                          <span className="practice-tag">{item.tag}</span>
-                          <h3>{item.title}</h3>
-                          <p>{item.text}</p>
+                        <div className="popular-test-copy">
+                          <h3>{test.title}</h3>
+                          <p className="popular-test-attempts"><Icon name="chart" size={13} />{test.attempts}</p>
+                          <div className="test-metadata" aria-label="Test details">
+                            <span><Icon name="book" size={13} />{test.questions}</span>
+                            <span><Icon name="chart" size={13} />{test.marks}</span>
+                            <span><Icon name="clock" size={13} />{test.duration}</span>
+                            <span><Icon name="languages" size={13} />{test.languages}</span>
+                          </div>
+                          <span className="test-preview-note">Preview only · not playable</span>
                         </div>
-                        <div className="practice-card-footer"><span>Sample listing · Not playable</span><span>{item.number}</span></div>
+                        <div className="popular-test-actions">
+                          <button className="test-cta" type="button" aria-expanded={testNoticeId === test.id} aria-controls={"test-feedback-" + test.id} onClick={() => setTestNoticeId((current) => current === test.id ? null : test.id)}>
+                            {test.actionLabel} <Icon name="arrow" size={15} />
+                          </button>
+                          <p id={"test-feedback-" + test.id} className="test-feedback" role="status" hidden={testNoticeId !== test.id}>This catalogue preview cannot be opened yet. Test questions and a playable route are not available.</p>
+                        </div>
                       </article>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="empty-practice" role="status">
-                    <div className="empty-practice-icon"><Icon name="book" size={20} /></div>
-                    <div>
-                      <strong>No sample set listed yet</strong>
-                      <p>There is no General Awareness practice preview in this version. The subject remains available as a study category.</p>
-                    </div>
-                    <button type="button" className="clear-filter" onClick={() => setSelectedSubject(null)}>Show all previews</button>
-                  </div>
-                )}
-                <p className="practice-disclaimer">These sample listings are illustrative. Interactive questions, timed tests, and official previous-year papers are not available yet.</p>
+                    );
+                  })}
+                </div>
+                <p className="catalogue-disclaimer">Test titles, Free/Premium labels, and attempt counts are illustrative display data, not verified access status or live activity. These tests cannot be launched in this version.</p>
               </section>
-            </div>
 
-            <aside className="utility-rail" aria-label="Study shortcuts">
+              <aside className="utility-rail" aria-label="Study shortcuts">
               <section id="exams" className="rail-panel exam-panel" aria-labelledby="exams-heading">
                 <div className="rail-heading">
                   <div>
